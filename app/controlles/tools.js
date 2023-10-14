@@ -1,7 +1,6 @@
 const { httpError } = require('../helpers/handleError');
 const toolModel = require('../models/tools');
 
-/**********  FUNCIONES PRINCIPALES   **********/
 
 const getTools = async (req, res) => {
     try {
@@ -16,7 +15,6 @@ const createTool = async (req, res) => {
     try {
       const { nombre, acronimo, categoria, items } = req.body;
   
-      // Verificar si ya existe una herramienta con el mismo nombre o acrónimo
       const toolExistente = await toolModel.findOne({
         $or: [
           { nombre: nombre },
@@ -37,8 +35,6 @@ const createTool = async (req, res) => {
     }
   };
   
-
-/********** CRUD POR PROPIEDAD DE ID **********/
 
 const getToolById = async (req, res) => {
     try {
@@ -84,8 +80,6 @@ const deleteToolById = async (req, res) => {
         httpError(res, error);
     }
 }
-
-/********** CRUD POR PROPIEDAD DE NOMBRE **********/
 
 const getToolByName = async (req, res) => {
     try {
